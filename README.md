@@ -1,0 +1,2 @@
+Heureka feed adapter
+====================
