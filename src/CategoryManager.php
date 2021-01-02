@@ -51,6 +51,9 @@ final class CategoryManager
 	}
 
 
+	/**
+	 * @return string[] (id => name)
+	 */
 	public function getSelectableCategories(): array
 	{
 		$return = [];

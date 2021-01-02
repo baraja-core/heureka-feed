@@ -499,24 +499,34 @@ final class HeurekaProduct
 			return;
 		}
 		if (\is_string($deliveryDate)) {
-			if (preg_match('/^\d+$/', $deliveryDate)) {
+			if (((int) $deliveryDate) < 1000 && preg_match('/^\d+$/', $deliveryDate)) {
 				$deliveryDate = (int) $deliveryDate;
 			} else {
 				try {
-					$date = new \DateTime($deliveryDate);
+					$deliveryDate = new \DateTime($deliveryDate);
 				} catch (\Throwable $e) {
 					throw new \InvalidArgumentException('Delivery date is invalid: ' . $e->getMessage(), $e->getCode(), $e);
 				}
-				if (\time() > $date->getTimestamp()) {
-					throw new \InvalidArgumentException('Delivery date can not be in past.');
-				}
-				$deliveryDate = $date->format('Y-m-d');
 			}
 		}
-		if (\is_int($deliveryDate) && $deliveryDate < 0) {
-			throw new \InvalidArgumentException('Delivery date can not be negative, but "' . $deliveryDate . '" given.');
+		if ($deliveryDate instanceof \DateTimeInterface) {
+			if (\time() > $deliveryDate->getTimestamp()) {
+				throw new \InvalidArgumentException('Delivery date can not be in past.');
+			}
+			$this->deliveryDate = $deliveryDate->format('Y-m-d');
+		} elseif (\is_int($deliveryDate)) {
+			if ($deliveryDate < 0) {
+				throw new \InvalidArgumentException('Delivery date can not be negative, but "' . $deliveryDate . '" given.');
+			}
+			$this->deliveryDate = (string) $deliveryDate;
+		} elseif (\is_string($deliveryDate)) {
+			$this->deliveryDate = $deliveryDate;
+		} else {
+			throw new \InvalidArgumentException(
+				'Delivery date must be "int", "string", "null" or "DateTime", '
+				. 'but type "' . \gettype($deliveryDate) . '" given.'
+			);
 		}
-		$this->deliveryDate = (string) $deliveryDate;
 	}
 
 
