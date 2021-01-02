@@ -56,7 +56,7 @@ final class FeedRenderer
 			$return[] = $item->toArray($this->descriptionRenderer);
 		}
 
-		$xml = ArrayToXml::convert(['SHOPITEM' => $return], 'SHOP');
+		$xml = ArrayToXml::convert(['SHOPITEM' => $return], 'SHOP', true, 'utf-8');
 		$this->response->setHeader('Content-type', 'text/xml; charset=utf-8');
 		echo $xml;
 		die;
