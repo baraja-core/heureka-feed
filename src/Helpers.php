@@ -103,7 +103,7 @@ final class Helpers
 		$isbn = str_replace('-', '', $isbn);
 		$check = 0;
 		for ($i = 0; $i < 10; $i++) {
-			if ('x' === strtolower($isbn[$i])) {
+			if (strtolower($isbn[$i]) === 'x') {
 				$check += 10 * (10 - $i);
 			} elseif (is_numeric($isbn[$i])) {
 				$check += (int) $isbn[$i] * (10 - $i);
