@@ -11,16 +11,16 @@
 	"require": {
 		"php": ">=7.4.0",
 		"baraja-core/xml-to-php-array": "^1.0",
-		"baraja-core/selectbox-tree": "^1.0",
+		"baraja-core/selectbox-tree": "^1.0 || ^2.0",
 		"spatie/array-to-xml": "^2.16",
-		"nette/utils": "^3.0",
-		"nette/http": "^3.0",
+		"nette/utils": "^3.2",
+		"nette/http": "^3.1",
 		"nette/di": "^3.0",
-		"nette/caching": "^3.0",
-		"nette/application": "^3.0"
+		"nette/caching": "^3.1",
+		"nette/application": "^3.1"
 	},
 	"require-dev": {
-		"baraja-core/markdown-latte-filter": "^1.0",
+		"baraja-core/markdown-latte-filter": "^2.0",
 		"phpstan/phpstan": "^0.12.18",
 		"tracy/tracy": "^2.7",
 		"phpstan/phpstan-nette": "^0.12.6",
