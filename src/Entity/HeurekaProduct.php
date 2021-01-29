@@ -471,9 +471,9 @@ final class HeurekaProduct
 		if ($cpc < 0) {
 			throw new \InvalidArgumentException('Heureka CPC can not be negative number, but "' . $cpc . '" given.');
 		}
-		if ($cpc > 1000) {
+		if ($cpc > 1_000) {
 			trigger_error('Maximal Heureka CPC value is 1000, but "' . $cpc . '" given.');
-			$cpc = 1000.0;
+			$cpc = 1_000.0;
 		}
 		$this->heurekaCpc = $cpc;
 	}
@@ -508,7 +508,7 @@ final class HeurekaProduct
 			return;
 		}
 		if (\is_string($deliveryDate)) {
-			if (((int) $deliveryDate) < 1000 && preg_match('/^\d+$/', $deliveryDate)) {
+			if (((int) $deliveryDate) < 1_000 && preg_match('/^\d+$/', $deliveryDate)) {
 				$deliveryDate = (int) $deliveryDate;
 			} else {
 				try {
