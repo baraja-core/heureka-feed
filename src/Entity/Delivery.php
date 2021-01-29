@@ -94,7 +94,7 @@ final class Delivery
 		if (isset(self::SUPPORTED_IDS[$id]) === false) {
 			throw new \InvalidArgumentException(
 				'Delivery identifier "' . $id . '" is not supported. '
-				. 'Did you mean "' . implode('", "', array_keys(self::SUPPORTED_IDS)) . '"?'
+				. 'Did you mean "' . implode('", "', array_keys(self::SUPPORTED_IDS)) . '"?',
 			);
 		}
 		$this->id = $id;
@@ -129,6 +129,8 @@ final class Delivery
 
 	public function getPriceCodFormatted(): ?string
 	{
-		return $this->priceCod === null ? null : str_replace(',00', '', number_format($this->priceCod, 2, ',', ''));
+		return $this->priceCod === null
+			? null
+			: str_replace(',00', '', number_format($this->priceCod, 2, ',', ''));
 	}
 }

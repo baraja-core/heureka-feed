@@ -59,8 +59,15 @@ final class HeurekaProduct
 	private array $accessories = [];
 
 
-	public function __construct(string $itemId, string $product, string $productName, string $url, float $priceVat, Category $category, string $manufacturer)
-	{
+	public function __construct(
+		string $itemId,
+		string $product,
+		string $productName,
+		string $url,
+		float $priceVat,
+		Category $category,
+		string $manufacturer
+	) {
 		$this->setitemId($itemId);
 		$this->setProduct($product);
 		$this->setProductName($productName);
@@ -474,7 +481,9 @@ final class HeurekaProduct
 
 	public function getHeurekaCpcFormatted(): ?string
 	{
-		return $this->heurekaCpc === null ? null : str_replace(',00', '', number_format($this->heurekaCpc, 2, ',', ''));
+		return $this->heurekaCpc === null
+			? null
+			: str_replace(',00', '', number_format($this->heurekaCpc, 2, ',', ''));
 	}
 
 
@@ -524,7 +533,7 @@ final class HeurekaProduct
 		} else {
 			throw new \InvalidArgumentException(
 				'Delivery date must be "int", "string", "null" or "DateTime", '
-				. 'but type "' . \gettype($deliveryDate) . '" given.'
+				. 'but type "' . \gettype($deliveryDate) . '" given.',
 			);
 		}
 	}

@@ -17,8 +17,11 @@ final class FeedRenderer
 	private ?DescriptionRenderer $descriptionRenderer;
 
 
-	public function __construct(Response $response, ?ProductLoader $productLoader = null, ?DescriptionRenderer $descriptionRenderer = null)
-	{
+	public function __construct(
+		Response $response,
+		?ProductLoader $productLoader = null,
+		?DescriptionRenderer $descriptionRenderer = null
+	) {
 		$this->response = $response;
 		$this->productLoader = $productLoader;
 		$this->descriptionRenderer = $descriptionRenderer;
@@ -42,7 +45,7 @@ final class FeedRenderer
 		if ($this->productLoader === null) {
 			throw new \RuntimeException(
 				'Product loader (implementing "' . ProductLoader::class . '") is not available. '
-				. 'Did you registered it as DIC service?'
+				. 'Did you registered it as DIC service?',
 			);
 		}
 

@@ -54,11 +54,12 @@ final class HeurekaFeedExtension extends CompilerExtension
 			. "\t\t\t" . '$this->getService(?)->render();' . "\n"
 			. "\t\t" . '};' . "\n"
 			. "\t" . '}' . "\n"
-			. '})();', [
+			. '})();',
+			[
 				'xml/heureka-feed.xml',
 				$application->getName(),
 				$heurekaManager->getName(),
-			]
+			],
 		);
 	}
 }
