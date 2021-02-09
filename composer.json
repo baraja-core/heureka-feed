@@ -9,7 +9,7 @@
 		}
 	],
 	"require": {
-		"php": "^7.4 || ^8.0",
+		"php": "^8.0",
 		"baraja-core/xml-to-php-array": "^1.0",
 		"baraja-core/selectbox-tree": "^1.0 || ^2.0",
 		"spatie/array-to-xml": "^2.16",
