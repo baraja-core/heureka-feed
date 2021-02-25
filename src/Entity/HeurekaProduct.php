@@ -58,6 +58,9 @@ final class HeurekaProduct
 	/** @var string[] */
 	private array $accessories = [];
 
+	/** @var mixed[] */
+	private array $customTags = [];
+
 
 	public function __construct(
 		string $itemId,
@@ -148,6 +151,9 @@ final class HeurekaProduct
 				$deliveries[] = $deliveryItem;
 			}
 			$return['DELIVERY'] = $deliveries;
+		}
+		foreach ($this->customTags as $customTagKey => $customTagValue) {
+			$return[$customTagKey] = $customTagValue;
 		}
 
 		return $return;
@@ -589,5 +595,20 @@ final class HeurekaProduct
 	public function setProductNo(?string $productNo): void
 	{
 		$this->productNo = $productNo;
+	}
+
+
+	/**
+	 * @return mixed[]
+	 */
+	public function getCustomTags(): array
+	{
+		return $this->customTags;
+	}
+
+
+	public function addCustomTag(string $tag, mixed $value): void
+	{
+		$this->customTags[$tag] = $value;
 	}
 }
