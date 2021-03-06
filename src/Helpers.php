@@ -72,7 +72,7 @@ final class Helpers
 		if (!preg_match('/^\d{13}$/', $barcode)) { // check to see if barcode is 13 digits long
 			return false;
 		}
-		$digit = static fn (int $position): int => (int) $barcode[$position];
+		$digit = static fn(int $position): int => (int) $barcode[$position];
 
 		// 1. Add the values of the digits in the even-numbered positions: 2, 4, 6, etc.
 		$evenSum = $digit(1) + $digit(3) + $digit(5) + $digit(7) + $digit(9) + $digit(11);
