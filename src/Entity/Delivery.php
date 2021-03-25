@@ -7,53 +7,31 @@ namespace Baraja\Heureka;
 
 final class Delivery
 {
-	public const CESKA_POSTA = 'CESKA_POSTA'; // Česká pošta - Balík Do ruky
-
-	public const CESKA_POSTA_NAPOSTU_DEPOTAPI = 'CESKA_POSTA_NAPOSTU_DEPOTAPI'; // Česká pošta - Balík Na poštu
-
-	public const CESKA_POSTA_DOPORUCENA_ZASILKA = 'CESKA_POSTA_DOPORUCENA_ZASILKA'; // Česká pošta - Doporučená zásilka
-
-	public const CSAD_LOGISTIK_OSTRAVA = 'CSAD_LOGISTIK_OSTRAVA'; // ČSAD Logistik Ostrava
-
-	public const DPD = 'DPD'; // DPD (nejedná se o DPD ParcelShop)
-
-	public const DHL = 'DHL'; // DHL
-
-	public const DSV = 'DSV'; // DSV
-
-	public const FOFR = 'FOFR'; // FOFR
-
-	public const GEBRUDER_WEISS = 'GEBRUDER_WEISS'; // Gebrüder Weiss
-
-	public const GEIS = 'GEIS'; // Geis (nejedná se o Geis Point)
-
-	public const GLS = 'GLS'; // GLS
-
-	public const HDS = 'HDS'; // HDS
-
-	public const PPL = 'PPL'; // PPL
-
-	public const SEEGMULLER = 'SEEGMULLER'; // Seegmuller
-
-	public const TNT = 'TNT'; // TNT
-
-	public const TOPTRANS = 'TOPTRANS'; // TOPTRANS
-
-	public const UPS = 'UPS'; // UPS
-
-	public const FEDEX = 'FEDEX'; // FedEX
-
-	public const RABEN_LOGISTICS = 'RABEN_LOGISTICS'; // Raben Logistics
-
-	public const ZASILKOVNA = 'ZASILKOVNA'; // Zásilkovna
-
-	public const DPD_PICKUP = 'DPD_PICKUP'; // DPD Pickup
-
-	public const BALIKOVNA_DEPOTAPI = 'BALIKOVNA_DEPOTAPI'; // Balíkovna
-
-	public const VLASTNI_PREPRAVA = 'VLASTNI_PREPRAVA'; // Vlastní přeprava
-
-	public const WEDO = 'WEDO'; // WeDo (IN TIME & Uloženka)
+	public const
+		CESKA_POSTA = 'CESKA_POSTA', // Česká pošta - Balík Do ruky
+		CESKA_POSTA_NAPOSTU_DEPOTAPI = 'CESKA_POSTA_NAPOSTU_DEPOTAPI', // Česká pošta - Balík Na poštu
+		CESKA_POSTA_DOPORUCENA_ZASILKA = 'CESKA_POSTA_DOPORUCENA_ZASILKA', // Česká pošta - Doporučená zásilka
+		CSAD_LOGISTIK_OSTRAVA = 'CSAD_LOGISTIK_OSTRAVA', // ČSAD Logistik Ostrava
+		DPD = 'DPD', // DPD (nejedná se o DPD ParcelShop)
+		DHL = 'DHL', // DHL
+		DSV = 'DSV', // DSV
+		FOFR = 'FOFR', // FOFR
+		GEBRUDER_WEISS = 'GEBRUDER_WEISS', // Gebrüder Weiss
+		GEIS = 'GEIS', // Geis (nejedná se o Geis Point)
+		GLS = 'GLS', // GLS
+		HDS = 'HDS', // HDS
+		PPL = 'PPL', // PPL
+		SEEGMULLER = 'SEEGMULLER', // Seegmuller
+		TNT = 'TNT', // TNT
+		TOPTRANS = 'TOPTRANS', // TOPTRANS
+		UPS = 'UPS', // UPS
+		FEDEX = 'FEDEX', // FedEX
+		RABEN_LOGISTICS = 'RABEN_LOGISTICS', // Raben Logistics
+		ZASILKOVNA = 'ZASILKOVNA', // Zásilkovna
+		DPD_PICKUP = 'DPD_PICKUP', // DPD Pickup
+		BALIKOVNA_DEPOTAPI = 'BALIKOVNA_DEPOTAPI', // Balíkovna
+		VLASTNI_PREPRAVA = 'VLASTNI_PREPRAVA', // Vlastní přeprava
+		WEDO = 'WEDO'; // WeDo (IN TIME & Uloženka)
 
 	public const SUPPORTED_IDS = [
 		self::CESKA_POSTA => self::CESKA_POSTA,
@@ -82,24 +60,18 @@ final class Delivery
 		self::WEDO => self::WEDO,
 	];
 
-	private string $id;
 
-	private float $price;
-
-	private ?float $priceCod;
-
-
-	public function __construct(string $id, float $price, ?float $priceCod = null)
-	{
+	public function __construct(
+		private string $id,
+		private float $price,
+		private ?float $priceCod = null
+	) {
 		if (isset(self::SUPPORTED_IDS[$id]) === false) {
 			throw new \InvalidArgumentException(
 				'Delivery identifier "' . $id . '" is not supported. '
 				. 'Did you mean "' . implode('", "', array_keys(self::SUPPORTED_IDS)) . '"?',
 			);
 		}
-		$this->id = $id;
-		$this->price = $price;
-		$this->priceCod = $priceCod;
 	}
 
 

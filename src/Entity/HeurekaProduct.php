@@ -503,10 +503,8 @@ final class HeurekaProduct
 	 * Delivery time of the product in days, ie the time from receipt of payment
 	 * (in case of cash on delivery from receipt of order) to dispatch of goods.
 	 * The delivery time can be the date from which the product will be placed on the market.
-	 *
-	 * @param int|string|\DateTimeInterface|null $deliveryDate
 	 */
-	public function setDeliveryDate($deliveryDate): void
+	public function setDeliveryDate(int|string|\DateTimeInterface|null $deliveryDate): void
 	{
 		if ($deliveryDate === null) {
 			$this->deliveryDate = null;
@@ -536,11 +534,6 @@ final class HeurekaProduct
 			$this->deliveryDate = (string) $deliveryDate;
 		} elseif (\is_string($deliveryDate)) {
 			$this->deliveryDate = $deliveryDate;
-		} else {
-			throw new \InvalidArgumentException(
-				'Delivery date must be "int", "string", "null" or "DateTime", '
-				. 'but type "' . \gettype($deliveryDate) . '" given.',
-			);
 		}
 	}
 

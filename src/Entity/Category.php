@@ -7,21 +7,12 @@ namespace Baraja\Heureka;
 
 final class Category
 {
-	private int $id;
-
-	private ?self $parent;
-
-	private string $name;
-
-	private ?string $fullName;
-
-
-	public function __construct(int $id, ?self $parent, string $name, ?string $fullName)
-	{
-		$this->id = $id;
-		$this->parent = $parent;
-		$this->name = $name;
-		$this->fullName = $fullName;
+	public function __construct(
+		private int $id,
+		private ?self $parent,
+		private string $name,
+		private ?string $fullName
+	) {
 	}
 
 

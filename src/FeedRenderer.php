@@ -10,21 +10,11 @@ use Spatie\ArrayToXml\ArrayToXml;
 
 final class FeedRenderer
 {
-	private Response $response;
-
-	private ?ProductLoader $productLoader;
-
-	private ?DescriptionRenderer $descriptionRenderer;
-
-
 	public function __construct(
-		Response $response,
-		?ProductLoader $productLoader = null,
-		?DescriptionRenderer $descriptionRenderer = null
+		private Response $response,
+		private ?ProductLoader $productLoader = null,
+		private ?DescriptionRenderer $descriptionRenderer = null
 	) {
-		$this->response = $response;
-		$this->productLoader = $productLoader;
-		$this->descriptionRenderer = $descriptionRenderer;
 	}
 
 

@@ -9,12 +9,9 @@ use Baraja\Markdown\CommonMarkRenderer;
 
 final class BarajaMarkdownDescriptionRenderer implements DescriptionRenderer
 {
-	public CommonMarkRenderer $commonMarkRenderer;
-
-
-	public function __construct(CommonMarkRenderer $commonMarkRenderer)
-	{
-		$this->commonMarkRenderer = $commonMarkRenderer;
+	public function __construct(
+		private CommonMarkRenderer $commonMarkRenderer
+	) {
 	}
 
 
