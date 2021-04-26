@@ -1,41 +1,41 @@
 {
-	"name": "baraja-core/heureka-feed",
-	"description": "Smart Heureka feed adapter.",
-	"homepage": "https://github.com/baraja-core/heureka-feed",
-	"authors": [
-		{
-			"name": "Jan Barášek",
-			"homepage": "https://baraja.cz"
-		}
-	],
-	"require": {
-		"php": "^8.0",
-		"baraja-core/xml-to-php-array": "^2.0",
-		"baraja-core/selectbox-tree": "^2.1",
-		"spatie/array-to-xml": "^3.0",
-		"nette/utils": "^3.2",
-		"nette/http": "^3.1",
-		"nette/di": "^3.0",
-		"nette/caching": "^3.1",
-		"nette/application": "^3.1"
-	},
-	"require-dev": {
-		"baraja-core/markdown-latte-filter": "^3.0",
-		"phpstan/phpstan": "^0.12.74",
-		"tracy/tracy": "^2.8",
-		"phpstan/phpstan-nette": "^0.12.14",
-		"spaze/phpstan-disallowed-calls": "^1.1",
-		"roave/security-advisories": "dev-master"
-	},
-	"autoload": {
-		"classmap": [
-			"src/"
-		]
-	},
-	"scripts": {
-		"phpstan": [
-			"vendor/bin/phpstan analyse src -c phpstan.neon --level 8 --no-progress"
-		]
-	},
-	"minimum-stability": "stable"
+  "name": "baraja-core/heureka-feed",
+  "description": "Smart Heureka feed adapter.",
+  "homepage": "https://github.com/baraja-core/heureka-feed",
+  "authors": [
+    {
+      "name": "Jan Barášek",
+      "homepage": "https://baraja.cz"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "baraja-core/xml-to-php-array": "^2.0",
+    "baraja-core/selectbox-tree": "^2.1",
+    "spatie/array-to-xml": "^3.0",
+    "nette/utils": "^3.2",
+    "nette/http": "^3.1",
+    "nette/di": "^3.0",
+    "nette/caching": "^3.1",
+    "nette/application": "^3.1"
+  },
+  "require-dev": {
+    "baraja-core/markdown-latte-filter": "^3.0",
+    "phpstan/phpstan": "^0.12.74",
+    "tracy/tracy": "^2.8",
+    "phpstan/phpstan-nette": "^0.12.14",
+    "spaze/phpstan-disallowed-calls": "^1.1",
+    "roave/security-advisories": "dev-master"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "scripts": {
+    "phpstan": [
+      "vendor/bin/phpstan analyse src -c phpstan.neon --level 8 --no-progress"
+    ]
+  },
+  "minimum-stability": "stable"
 }
