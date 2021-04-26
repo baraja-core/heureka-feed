@@ -12,7 +12,7 @@
 		"php": "^8.0",
 		"baraja-core/xml-to-php-array": "^2.0",
 		"baraja-core/selectbox-tree": "^2.1",
-		"spatie/array-to-xml": "^2.16",
+		"spatie/array-to-xml": "^3.0",
 		"nette/utils": "^3.2",
 		"nette/http": "^3.1",
 		"nette/di": "^3.0",
