@@ -42,7 +42,7 @@ final class Helpers
 	 * Super fast algorithm for compiling a list of categories based on tree browsing.
 	 *
 	 * @param mixed[] $categories
-	 * @return mixed[][]
+	 * @return array<int, array{id: int, name: string, parent_id: int|null}>
 	 */
 	public static function buildCategorySelectboxList(array $categories, ?int $parent = null): array
 	{
