@@ -69,7 +69,7 @@ final class HeurekaProduct
 		string $url,
 		float $priceVat,
 		Category $category,
-		string $manufacturer
+		string $manufacturer,
 	) {
 		$this->setitemId($itemId);
 		$this->setProduct($product);

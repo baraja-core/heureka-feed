@@ -10,7 +10,7 @@ use Baraja\Markdown\CommonMarkRenderer;
 final class BarajaMarkdownDescriptionRenderer implements DescriptionRenderer
 {
 	public function __construct(
-		private CommonMarkRenderer $commonMarkRenderer
+		private CommonMarkRenderer $commonMarkRenderer,
 	) {
 	}
 

@@ -13,7 +13,7 @@ final class FeedRenderer
 	public function __construct(
 		private Response $response,
 		private ?ProductLoader $productLoader = null,
-		private ?DescriptionRenderer $descriptionRenderer = null
+		private ?DescriptionRenderer $descriptionRenderer = null,
 	) {
 	}
 

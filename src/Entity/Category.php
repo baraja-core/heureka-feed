@@ -11,7 +11,7 @@ final class Category
 		private int $id,
 		private ?self $parent,
 		private string $name,
-		private ?string $fullName
+		private ?string $fullName,
 	) {
 	}
 

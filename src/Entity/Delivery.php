@@ -64,7 +64,7 @@ final class Delivery
 	public function __construct(
 		private string $id,
 		private float $price,
-		private ?float $priceCod = null
+		private ?float $priceCod = null,
 	) {
 		if (isset(self::SUPPORTED_IDS[$id]) === false) {
 			throw new \InvalidArgumentException(

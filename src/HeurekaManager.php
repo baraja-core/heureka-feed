@@ -8,7 +8,7 @@ namespace Baraja\Heureka;
 final class HeurekaManager
 {
 	public function __construct(
-		private FeedRenderer $feedRenderer
+		private FeedRenderer $feedRenderer,
 	) {
 	}
 
