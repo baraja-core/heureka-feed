@@ -436,12 +436,16 @@ final class HeurekaProduct
 	}
 
 
-	public function setEan(string $ean): void
+	public function setEan(?string $ean): void
 	{
-		if (Helpers::validateEAN13($ean) === false) {
-			throw new \InvalidArgumentException('EAN "' . $ean . '" is not valid. Please read EAN-13 specification.');
+		if ($ean === null) {
+			$this->ean = null;
+		} else {
+			if (Helpers::validateEAN13($ean) === false) {
+				throw new \InvalidArgumentException(sprintf('EAN "%s" is not valid. Please read EAN-13 specification.', $ean));
+			}
+			$this->ean = $ean;
 		}
-		$this->ean = $ean;
 	}
 
 
