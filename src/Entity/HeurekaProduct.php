@@ -71,7 +71,7 @@ final class HeurekaProduct
 		Category $category,
 		string $manufacturer,
 	) {
-		$this->setitemId($itemId);
+		$this->setItemId($itemId);
 		$this->setProduct($product);
 		$this->setProductName($productName);
 		$this->setUrl($url);
@@ -207,7 +207,7 @@ final class HeurekaProduct
 		if (Strings::length($id) > 36) {
 			throw new \InvalidArgumentException('Maximum "ItemId" length is 36 characters, but identifier "' . $id . '" given.');
 		}
-		if (!preg_match('/^[a-zA-Z0-9-_]+$/', $id)) {
+		if (preg_match('/^[a-zA-Z0-9-_]+$/', $id) !== 1) {
 			throw new \InvalidArgumentException('ItemId does not match mandatory format, because "' . $id . '" given.');
 		}
 		$this->itemId = $id;
@@ -222,7 +222,8 @@ final class HeurekaProduct
 
 	public function setDescription(?string $description): void
 	{
-		$this->description = Strings::firstUpper(trim($description ?? '')) ?: null;
+		$description = Strings::firstUpper(trim($description ?? ''));
+		$this->description = $description !== '' ? $description : null;
 	}
 
 
@@ -311,7 +312,7 @@ final class HeurekaProduct
 		if (Strings::length($url) > 255) {
 			throw new \InvalidArgumentException('Maximum "videoUrl" length is 255 characters, but string "' . $url . '" given.');
 		}
-		if (!preg_match('/^https?:\/\/(?:www\.)?(youtube\.com|yt\.be)\//', $url)) {
+		if (preg_match('/^https?:\/\/(?:www\.)?(youtube\.com|yt\.be)\//', $url) !== 1) {
 			throw new \InvalidArgumentException('Video URL must be video from YouTube (domain youtube.com or yt.be), but source "' . $url . '" given.');
 		}
 		$this->videoUrl = $url;
@@ -516,7 +517,7 @@ final class HeurekaProduct
 			return;
 		}
 		if (\is_string($deliveryDate)) {
-			if (((int) $deliveryDate) < 1_000 && preg_match('/^\d+$/', $deliveryDate)) {
+			if (((int) $deliveryDate) < 1_000 && preg_match('/^\d+$/', $deliveryDate) === 1) {
 				$deliveryDate = (int) $deliveryDate;
 			} else {
 				try {
@@ -531,13 +532,11 @@ final class HeurekaProduct
 				throw new \InvalidArgumentException('Delivery date can not be in past.');
 			}
 			$this->deliveryDate = $deliveryDate->format('Y-m-d');
-		} elseif (\is_int($deliveryDate)) {
+		} else {
 			if ($deliveryDate < 0) {
 				throw new \InvalidArgumentException('Delivery date can not be negative, but "' . $deliveryDate . '" given.');
 			}
 			$this->deliveryDate = (string) $deliveryDate;
-		} elseif (\is_string($deliveryDate)) {
-			$this->deliveryDate = $deliveryDate;
 		}
 	}
 

@@ -25,7 +25,7 @@ final class CategoryManager
 
 
 	/**
-	 * @return Category[]
+	 * @return array<int, Category>
 	 */
 	public function getCategories(): array
 	{
@@ -43,7 +43,8 @@ final class CategoryManager
 
 	public function getCategory(int $id): Category
 	{
-		if (($category = $this->getCategories()[$id] ?? null) === null) {
+		$category = $this->getCategories()[$id] ?? null;
+		if ($category === null) {
 			throw new \InvalidArgumentException('Category "' . $id . '" does not exist.');
 		}
 
@@ -52,13 +53,13 @@ final class CategoryManager
 
 
 	/**
-	 * @return string[] (id => name)
+	 * @return array<int, string> (id => name)
 	 */
 	public function getSelectableCategories(): array
 	{
 		$return = [];
 		foreach ($this->getCategories() as $category) {
-			if ($category->getCategoryText() !== null) {
+			if ($category->getCategoryText() !== '') {
 				$return[$category->getId()] = $category->getName();
 			}
 		}
@@ -72,7 +73,8 @@ final class CategoryManager
 	 */
 	public function getCategoriesSelectbox(): array
 	{
-		if (($return = $this->cache->load('selectbox-tree')) === null) {
+		$return = $this->cache->load('selectbox-tree');
+		if ($return === null) {
 			$return = (new SelectboxTree)->process(Helpers::buildCategorySelectboxList($this->getFeedArray()));
 			$this->cache->save('selectbox-tree', $return, [
 				Cache::EXPIRATION => '1 hour',
@@ -94,7 +96,8 @@ final class CategoryManager
 
 	public function getFeed(): string
 	{
-		if (($cache = $this->cache->load('feed')) === null) {
+		$cache = $this->cache->load('feed');
+		if ($cache === null) {
 			$cache = (string) file_get_contents($this->feedUrl);
 			$this->cache->save('feed', $cache, [
 				Cache::EXPIRATION => '8 hours',

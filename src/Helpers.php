@@ -27,7 +27,12 @@ final class Helpers
 			$categories = [$categories];
 		}
 		foreach ($categories as $item) {
-			$category = new Category((int) $item['CATEGORY_ID'], $parent, $item['CATEGORY_NAME'], $item['CATEGORY_FULLNAME'] ?? null);
+			$category = new Category(
+				id: (int) $item['CATEGORY_ID'],
+				parent: $parent,
+				name: $item['CATEGORY_NAME'],
+				fullName: $item['CATEGORY_FULLNAME'] ?? null,
+			);
 			if (isset($item['CATEGORY'])) {
 				$children[] = self::buildCategoryList($item['CATEGORY'], $category);
 			}
@@ -69,7 +74,7 @@ final class Helpers
 
 	public static function validateEAN13(string $barcode): bool
 	{
-		if (!preg_match('/^\d{13}$/', $barcode)) { // check to see if barcode is 13 digits long
+		if (preg_match('/^\d{13}$/', $barcode) !== 1) { // check to see if barcode is 13 digits long
 			return false;
 		}
 		$digit = static fn(int $position): int => (int) $barcode[$position];
